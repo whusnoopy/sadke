@@ -1,0 +1,49 @@
+body,form{margin:0}
+img{border:0}
+td{font-size:14px}
+div{font-size:12px;line-height:18px}
+a{color:#0000CC;text-decoration:none}
+a:hover {color:#cc0000;text-decoration:underline}
+hr{border-top:1px solid #aaaaaa}
+
+#hd{margin-top:8px;margin-bottom:4px;width:720px;font-family:Verdana;}
+#bar{height:32px;line-height:32px;width:987px;
+font-size:14px;font-family:Verdana;color:#ffffff;text-align:center;font-weight:bold;
+background-color:#0077cc}
+#bar a{padding:7px 6px;color:#ffffff}
+#bar a:hover {height:32px;background:#00aaff;color:#ffffcc;text-decoration:none}
+#ft{clear:both;color:#666666;font-size:12px;font-family:Verdana;text-align:center}
+#ft a{color:#3333cc}
+
+#main{padding:8px 10px 0 10px;width:979px;font-family:Verdana}
+#left{clear:left;margin-right:190px;}
+#right{clear:left;float:right;width:185px;}
+
+.gat,.pt{padding-left:10px;height:28px;line-height:28px;font-size:14px;font-weight:bold}
+.gab,.pb{line-height:20px;font-size:14px}
+.gat,.gab{border-left:1px solid #a8bee7;border-right:1px solid #a8bee7}
+.pt,.pb{border-left:1px solid #00a7dd;border-right:1px solid #00a7dd}
+.gat{border-top:1px solid #a8bee7;background:#d8dfec}
+.gab{margin-bottom:4px;padding:4px 10px 4px 10px;border-bottom:1px solid #a8bee7}
+.pt{border-top:1px solid #00a7dd;background:#88c7ff}
+.pb{margin-bottom:4px;padding:8px 8px 8px 10px;border-bottom:1px solid #00a7dd}
+
+.time{float:right;margin-right:8px;padding:5px 2px 3px;font-size:12px;font-style:italic}
+.pno{margin-left:-8px;padding:3px 8px;border-right:2px solid #ffffff}
+
+.rt,.sref,.spa{padding-left:8px;height:20px;line-height:20px;font-size:12px;font-weight:bold}
+.rt,.rb{margin-right:48px;border-left:1px solid #a5da94;border-right:1px solid #a5da94}
+.rt{border-top:1px solid #a5da94;background:#dbf1d4;}
+.rb{line-height:20px;font-size:12px;margin-bottom:8px;padding:8px;font-style:italic;border-bottom:1px solid #a5da94}
+
+.sref{margin:0px 640px 4px 0px;border:1px solid #a5da94}
+.sreft{background:#dbf1d4;float:right;padding-left:8px;padding-right:8px}
+
+.spa{border:1px solid #e3d686;margin:8px 0px 0px 480px;}
+.spat{background:#f2eab7;float:right;padding-left:8px;padding-right:8px}
+
+.sq{margin:4px;height:24px;padding:0px;border:1px solid #a5da94;font-size:16px;text-align:center;}
+.sqi{margin:1px;height:20px;font-size:14px;font-family:Tahoma;border:0}
+.button{float:right;margin:0;padding:2px 8px;color:#ffffff;background:#50b050;font-weight:bold;font-size:16px;font-family:Verdana;border:0}
+.button:hover {color:#009f00;background:#dbf1d4;}
+
