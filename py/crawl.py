@@ -10,10 +10,10 @@ import urllib2
 
 from base import logging
 
-def crawlPage(url, dir = "/tmp/", max_pagenum = 10):
+def crawlPage(url, dest="/tmp/", refresh=False, max_pagenum=10):
   filelist = []
   # get web page, translate it to unicode and save it as a local file
-  filename = dir + url[url.find('thread-'):]
+  filename = dest + url[url.find('thread-'):]
   if not getUrlAsFile(url, filename):
     return []
 
@@ -32,7 +32,7 @@ def crawlPage(url, dir = "/tmp/", max_pagenum = 10):
 
   return filelist
 
-def getUrlAsFile(url, filename, recrawl = False):
+def getUrlAsFile(url, filename, recrawl=False):
   # avoid re-crawl, if need update, remove the following line
   if os.path.exists(filename) and not recrawl:
     return True
@@ -67,7 +67,6 @@ def checkMultiPage(filename):
 
 def main():
   parser = optparse.OptionParser(usage='%prog [options] FILE')
-  
   options, args = parser.parse_args()
 
   if len(args) < 1:

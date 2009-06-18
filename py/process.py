@@ -11,7 +11,6 @@ from base import logger
 from crawl import crawlPage
 from extract import extractPage
 from adsgen import genUpdateAds
-from utilxml import readXmlFile
 from utilxml import outputXmlAdsFile
 
 def main():
