@@ -11,13 +11,13 @@ def stringToSeconds(s):
 
 def LOGGER():
   log = logging.getLogger(__name__)
-  log.setLevel(getattr(logging, "%s" % level))
+  log.setLevel(logging.ERROR)
   formatter = logging.Formatter('%(asctime)s [%(levelname)s]%(filename)s:'
                                 '%(lineno)d: %(message)s', '%m-%d,%H:%M:%S')
 
   # Console Logger
   ch = logging.StreamHandler()
-  ch.setLevel(logging.ERROR)
+  ch.setLevel(logging.INFO)
   ch.setFormatter(formatter)
   log.addHandler(ch)
 

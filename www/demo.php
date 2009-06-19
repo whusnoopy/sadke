@@ -1,12 +1,13 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");
-
-$doc_file = '/tmp/adke.xml';
+if (isset($_GET['doc']))
+  $doc_file = "/home/cswenye/sadke/tmp/".$_GET['doc'];
+else
+  $doc_file = "/home/cswenye/sadke/tmp/adke.xml";
 
 if (isset($_GET['p']))
   $cp = $_GET['p'];
 else
-  $cp = 0;
+  $cp = 1;
 
 $domdoc = new DOMDocument();
 $domdoc->load( $doc_file );
@@ -22,12 +23,7 @@ $banner_ads = $ads->getElementsByTagName( "banner" )->item(0);
 $sidebar_ads = $ads->getElementsByTagName( "sidebar" )->item(0);
 $pads = $ads->getElementsByTagName('pads');
 ?>
-<html>
-<head>
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
+<?php include("header.php") ?>
 
 <div id="right">
 
@@ -40,8 +36,8 @@ $pads = $ads->getElementsByTagName('pads');
   <input type="submit" value="Go!" class="button"/>
   <input value="<?php echo $cp==$sp?$cp:$cp+1; ?>" name="p" size="4" class="sqi" />
 </div>
-</center>
 </form>
+</center>
 </div>
 
 <?php
@@ -133,5 +129,5 @@ foreach( $posts as $post ) {
 
 </div>
 
-</body>
-</html>
+<?php include("footer.php") ?>
+

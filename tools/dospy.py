@@ -12,9 +12,11 @@ sys.path.append("/home/cswenye/sadke/py/")
 
 from base import logger
 from crawl import crawlPage
+from crawl import crawlSite
 from extract import extractPage
 from adsgen import genUpdateAds
 from utilxml import outputXmlAdsFile
+
 
 def genListHtml(filelist, ref_only, strong_ref):
   dir_path = '/home/cswenye/adke/data/'
@@ -58,7 +60,7 @@ def main():
   if len(args) < 1:
     site = "http://bbs.dospy.com"
   elif len(args) > 1:
-    parser.error('Only one dir may be specified.')
+    parser.error('Only one site may be specified.')
   else:
     site = args[0]
 
@@ -68,6 +70,10 @@ def main():
     work_dir = "/home/cswenye/sadke/tmp/"
 
   print 'start to process site %s' % site
+
+  thread_list_file = work_dir + site
+  if os.path.exists(filename) and not recrawl:
+  thread_list = crawlSite(site, options.refresh)
 
   for url in thread_list:
 
