@@ -5,9 +5,11 @@
     $url = "";
   if (strlen($url) > 0) {
     system("python /home/cswenye/sadke/py/process.py $url", $retval);
-    if ($retval == 0)
-      echo "<meta http-equiv=refresh content='0, url=demo.php'>";
+    if ($retval == 0) {
+      echo "<script type='text/javascript'>location.href='demo.php';</script>";
+      exit;
+    }
   }
 
-//  echo "<meta http-equiv=refresh content='0, url=index.php?msg=Process page $url Failed'>";
+  echo "<script type='text/javascript'>location.href='index.php?msg=Process page $url Faile';</script>";
 ?>

@@ -16,23 +16,31 @@ from utilxml import outputXmlAdsFile
 def main():
   # args and options init
   parser = optparse.OptionParser(usage='%prog url')
+  parser.add_option('-d', '--work_dir', dest='work_dir',
+                    help='Work dictionary, or will use /home/cswenye/sadke/tmp/ defaultly')
+  parser.add_option('-r', '--refresh', action="store_true", dest='refresh', default=False,
+                    help='Refresh each page')
   options, args = parser.parse_args()
 
-  # the input file process
   if len(args) < 1:
     parser.error('Url to process not provided.')
   elif len(args) > 1:
     parser.error('Only one url may be specified.')
+  else:
+    url = args[0]
 
-  url = args[0]
-  work_dir = "/home/cswenye/sadke/tmp/"
+  if options.work_dir:
+    work_dir = os.path.abspath(options.work_dir)
+  else:
+    work_dir = "/home/cswenye/sadke/tmp/"
+
   thread = url[url.find('thread-'):]
   file_path = os.path.join(work_dir, thread)
   output_file_path = os.path.join(work_dir, "adke.xml")
 
   # Crawl pages from internet
   print 'crawl...'
-  filelist = crawlPage(url, work_dir)
+  filelist = crawlPage(url, work_dir, options.refresh)
 
   if not filelist:
     logger.error("Can't crawl url '%s'" % url)

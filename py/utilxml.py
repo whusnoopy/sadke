@@ -47,7 +47,7 @@ def readXmlFile(file_path, number=150):
      'tokens': [token, token, ...] # seged tokens from ref body
     }
   '''
-  logger.info('extract xml file %(file_path)s' % locals())
+  logger.debug('extract xml file %(file_path)s' % locals())
 
   xmldoc = minidom.parse(file_path)
   posts = []
@@ -116,7 +116,7 @@ def outputXmlAdsFile(file_path, url, posts, ads):
   '''output ads keywords in sads and pads to a xml file on file_path
   '''
 
-  logger.info('write ads to xml file %(file_path)s' % locals())
+  logger.debug('write ads to xml file %(file_path)s' % locals())
   xmlstr = []
   xmlstr.append('<?xml version="1.0" encoding="utf-8"?>')
   xmlstr.append('<page>\n')

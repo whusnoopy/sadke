@@ -36,8 +36,8 @@ def selectAdWords(scored_tokens, words_number=3, score_limit=1):
     else:
       ad_words.append(token)
       ad_words_count += 1
-      logger.info('%(token)s(%(score)f) is selected as '
-                  '%(ad_words_count)d ad word' % locals())
+      logger.debug('%(token)s(%(score)f) is selected as '
+                   '%(ad_words_count)d ad word' % locals())
 
     if ad_words_count == words_number:
       logger.debug("got enough adwords, exit")
@@ -75,7 +75,7 @@ def updateScoredPosts(scored_posts, post):
   for ref in post['refs']:
     logger.debug("Update the post %d's score replied by post %d" % (ref['no'], post['no']))
     # ref['no'] == 0 means it refer to no post before
-    if ref['no'] == 0:
+    if ref['no'] == 0 or ref['no'] > len(scored_posts):
       continue
     rs = scored_posts[ref['no']-1]
     if ref['tokens']:
@@ -84,6 +84,7 @@ def updateScoredPosts(scored_posts, post):
     else:
       # refer, consier the body only
       scored_posts[ref['no']-1] = mergeScoredTokens(rs, rs, beta*gamma)
+      
   return scored_posts
 
 def genAds4Post(scored_post, post, scored_posts, ads_num=3):
@@ -95,7 +96,7 @@ def genAds4Post(scored_post, post, scored_posts, ads_num=3):
   # other posts' token value
   for ref in post['refs']:
     # ref['no'] == 0 means it refer to no post before
-    if ref['no'] == 0:
+    if ref['no'] == 0 or ref['no'] > len(scored_posts):
       continue
     if ref['tokens']:
       # part quote
@@ -106,7 +107,7 @@ def genAds4Post(scored_post, post, scored_posts, ads_num=3):
      
   ads = selectAdWords(all_tokens, ads_num)
   adskeywords = " ".join(ads)
-  logger.info('got ads %s for post %d' % (adskeywords, post['no']))
+  logger.debug('got ads %s for post %d' % (adskeywords, post['no']))
 
   return ads
 
@@ -121,7 +122,7 @@ def genAds4Page(scored_posts, ads_num=6):
       scored_tokens[token] += score
   ads = selectAdWords(scored_tokens, ads_num)
   adskeywords = " ".join(ads)
-  logger.info('got general ads keywords as %(adskeywords)s' % locals())
+  logger.debug('got general ads keywords as %(adskeywords)s' % locals())
 
   return ads
 

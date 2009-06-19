@@ -1,5 +1,6 @@
 body,form{margin:0}
 img{border:0}
+tr{height:24px;text-align:center}
 td{font-size:14px}
 div{font-size:12px;line-height:18px}
 a{color:#0000CC;text-decoration:none}
@@ -18,6 +19,7 @@ background-color:#0077cc}
 #main{padding:8px 10px 0 10px;width:979px;font-family:Verdana}
 #left{clear:left;margin-right:190px;}
 #right{clear:left;float:right;width:185px;}
+#nt{padding:5px 20px;margin:0px 20px 8px;color:#ff4757;font-weight:bold;text-align:center;background-color:#ffe7f3;border:#ffb7d7 1px solid;}
 
 .gat,.pt{padding-left:10px;height:28px;line-height:28px;font-size:14px;font-weight:bold}
 .gab,.pb{line-height:20px;font-size:14px}
@@ -44,6 +46,12 @@ background-color:#0077cc}
 
 .sq{margin:4px;height:24px;padding:0px;border:1px solid #a5da94;font-size:16px;text-align:center;}
 .sqi{margin:1px;height:20px;font-size:14px;font-family:Tahoma;border:0}
-.button{float:right;margin:0;padding:2px 8px;color:#ffffff;background:#50b050;font-weight:bold;font-size:16px;font-family:Verdana;border:0}
+.button{float:right;height:100%;margin:0;padding:2px 8px;color:#ffffff;background:#50b050;font-weight:bold;font-size:16px;font-family:Verdana;border:0}
 .button:hover {color:#009f00;background:#dbf1d4;}
+
+.otr {background-color:#f7ffe7;}
+.etr {background-color:#e7f0ff;}
+.htr {background-color:#ffe7f3;}
+
+.hot {vertical-align:super;color:#ff3333;font-weight:bold}
 

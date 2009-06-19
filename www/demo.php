@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['doc']))
-  $doc_file = "/home/cswenye/sadke/tmp/".$_GET['doc'];
+  $doc_file = $_GET['doc'];
 else
   $doc_file = "/home/cswenye/sadke/tmp/adke.xml";
 

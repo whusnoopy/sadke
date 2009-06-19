@@ -11,7 +11,7 @@ def stringToSeconds(s):
 
 def LOGGER():
   log = logging.getLogger(__name__)
-  log.setLevel(logging.ERROR)
+  log.setLevel(logging.INFO)
   formatter = logging.Formatter('%(asctime)s [%(levelname)s]%(filename)s:'
                                 '%(lineno)d: %(message)s', '%m-%d,%H:%M:%S')
 

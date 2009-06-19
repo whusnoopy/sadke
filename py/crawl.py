@@ -7,18 +7,18 @@ import os
 import sys
 import optparse
 import urllib2
+import re
 
 from base import logger
 
 
-def crawlPage(url, dest="/tmp/", refresh=False, max_pagenum=10):
+def crawlPage(url, dest="/tmp/", refresh=False, min_pagenum=1, max_pagenum=10):
   filelist = []
 
-  filename = dest + url[url.find('thread-'):]
-  if os.path.exists(filename) and not recrawl:
+  filename = os.path.join(dest, url[url.find('thread-'):])
+  if os.path.exists(filename) and not refresh:
     for page_index in range(1, max_pagenum):
       filename = dest + "%s-%d-1.html" % (url[url.find('thread-'):url.find("-1-")], page_index)
-      print filename
       if os.path.exists(filename):
         filelist.append(filename)
       else:
@@ -27,11 +27,6 @@ def crawlPage(url, dest="/tmp/", refresh=False, max_pagenum=10):
   content = getUrl(url)
   if not content:
     return filelist
-
-  f = file(filename, "w")
-  f.write(content)
-  f.close
-  filelist.append(filename)
 
   # if there is a multi pages topic, get the after pages, and extract them
   start_point = content.find('class="p_pages">&nbsp;1/')
@@ -42,12 +37,22 @@ def crawlPage(url, dest="/tmp/", refresh=False, max_pagenum=10):
   else:
     pages = 1
 
+  if pages < min_pagenum:
+    return filelist
+
+  f = file(filename, "w")
+  f.write(content)
+  f.close
+  filelist.append(filename)
+
   if pages > max_pagenum:
     pages = max_pagenum
   for page_index in range(2, pages + 1):
     current_url = url[:url.find("-1-")] + "-%d-1.html" % page_index
     wp_content = getUrl(current_url)
-    filename = dest + current_url[current_url.find('thread-'):]
+    if not wp_content:
+      continue
+    filename = os.path.join(dest, current_url[current_url.find('thread-'):])
     f = file(filename, "w")
     f.write(wp_content)
     f.close()
@@ -56,21 +61,20 @@ def crawlPage(url, dest="/tmp/", refresh=False, max_pagenum=10):
   return filelist
 
 
-def crawlSite(site):
+def crawlSite(site, forum_list=[]):
   threads = []
-
-  content = getUrl(site)
-  if not content:
-    return threads
-
-  forum_list = re.findall(ur'forum-[0-9]{1,3}-1\.html', content)
+  
+  if not forum_list:
+    content = getUrl(site)
+    if not content:
+      return threads
+    forum_list = re.findall(ur'forum-[0-9]{1,3}-1\.html', content)
 
   for forum in forum_list :
     forum_url = site + forum
     content = getUrl(forum_url)
     if not content:
       return threads
-
     content = content[content.find("论坛主题"):]
     threads.extend([t[t.find("thread"):]
                    for t in re.findall(ur'<td class="f_folder"><a href="thread-[0-9]{1,10}-1-1\.html', content)])

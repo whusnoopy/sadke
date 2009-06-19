@@ -37,7 +37,7 @@ def extractPage(file_path, posts=[]):
     }
   '''
 
-  logger.info('Start to extract page %s' % file_path)
+  logger.debug('Start to extract page %s' % file_path)
 
   pf = file(file_path, "r")
   page_content = pf.read()
@@ -60,7 +60,10 @@ def extractPage(file_path, posts=[]):
     if reply_id > 0 and reply_id < post['no']:
       refs = {}
       refs['no'] = reply_id
-      refs['id'] = posts[reply_id-1]['id']
+      if reply_id > len(posts):
+        refs['id'] = refs['no']
+      else:
+        refs['id'] = posts[reply_id-1]['id']
       refs['body'] = ""
       refs['tokens'] = []
       post['refs'].append(refs)
@@ -82,13 +85,13 @@ def extractPage(file_path, posts=[]):
 
     # Every elements extract already, append this post dictionary to posts
     posts.append(post)
-    logger.info('Got post_%d "%s" post on %f: %s' % \
-                 (post['no'], post['title'], post['time'], post['body']))
+    logger.debug('Got post_%d "%s" post on %f: %s' % \
+                  (post['no'], post['title'], post['time'], post['body']))
 
     # Find next post start
     post_content, ppos = detectNextPost(page_content, ppos)
 
-  logger.info('Extract %(file_path)s successful.' % locals())
+  logger.debug('Extract %(file_path)s successful.' % locals())
   return posts
 
 def main() :

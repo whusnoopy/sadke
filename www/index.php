@@ -1,26 +1,26 @@
 <?php include("header.php") ?>
+<?php
+  if (isset($_GET["msg"])) {
+    $msg = $_GET["msg"];
+    echo "<div id=\"nt\">Error: $msg</div>";
+  }
+?>
 
 <div id="right">
 
 <div class="pt">Navigate</div>
 <div class="pb">
+  Single Page <a href="">Sample</a><br />
 </div>
 
 </div>
 
 <div id="left">
 
-<?php
-  if (isset($_GET["msg"])) {
-    $msg = $_GET["msg"];
-    echo "<span class=\"nt\">$msg</span>";
-  }
-?>
-
-<div class="pt"></div>
+<div class="pt">Process Single Page</div>
 <div class="pb">
 <center>
-Input an url you want to see, or view the sample <a href="/adke/processpage.php?url=http://whusnoopy.vicp.net:25001/adke/thread-4005336-1-1.html">dospy</a><br /> 
+Input an url you want to see, or view the sample <a href="processpage.php?url=thread-4027497-1-1.html">dospy</a><br /> 
 <form method="get" name="demogo" action="processpage.php">
  <div class="sq" style="width:610px">
   <input type="submit" value="Go!" class="button"/>
@@ -28,6 +28,11 @@ Input an url you want to see, or view the sample <a href="/adke/processpage.php?
  </div>
 </form>
 </center>
+</div>
+
+<div class="pt">Supported Sites</div>
+<div class="pb">
+  <a href="site.php?site=dospy">Dospy</a>
 </div>
 
 </div>
