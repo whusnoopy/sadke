@@ -15,29 +15,8 @@ from extract import extractPage
 from adsgen import genUpdateAds
 from utilxml import readXmlFile
 from utilxml import outputXmlAdsFile
+from utilhtml import genHtml
 
-
-def genHtml(filelist, work_dir):
-  count = 0
-  fl = []
-  fl.append('<table><tbody>')
-  fl.append('<tr><th width="800">topic</td><th width="96">posts</th></tr>')
-  for t in filelist:
-    count += 1
-    if count % 2:
-      fl.append('<tr class="otr">')
-    else:
-      fl.append('<tr class="etr">')
-    file_path = os.path.join(work_dir, t[0])
-    if t[2] > 30:
-      fl.append('<td><a href="demo.php?doc=%s&p=20" target="_blank">%s</a><span class="hot">Hot!</span></td><td><b>%s</b></td>' % (file_path, t[1], t[2]))
-    else:
-      fl.append('<td><a href="demo.php?doc=%s&p=20" target="_blank">%s</a></td><td>%s</td>' % (file_path, t[1], t[2]))
-    fl.append('</tr>')
-
-  fl.append('</tbody></table>')
-
-  return '\n'.join(fl)
 
 def main():
   # args and options init
@@ -89,15 +68,15 @@ def main():
   count = 0
   filelist = []
   for t in thread_list:
-    # count += 1
+    count += 1
 
     url = site + t
     thread = (t.split('.'))[-2]
     output_file_path = os.path.join(work_dir, "%s.xml" % thread)
 
-    if os.path.exists(output_file_path):
+    if os.path.exists(output_file_path) and not options.refresh:
       try:
-        posts = readXmlFile(output_file_path)
+        url, posts = readXmlFile(output_file_path)
       except:
         print sys.exc_info()
       if not options.regen:
@@ -112,14 +91,14 @@ def main():
       # crawl
       crawlfilelist = crawlPage(url, work_dir, options.refresh, 2, 4)
       if not crawlfilelist:
-        logger.info('Crawl %s failed, skip' % url)
+        logger.error('Crawl %s failed, skip' % url)
         continue
       # extract
       posts = []
       for f in crawlfilelist:
         posts = extractPage(f, posts)
       if not posts:
-        logger.info('Extract %s failed, skip' % f)
+        logger.error('Extract %s failed, skip' % f)
         continue
     # gen ads
     ads = genUpdateAds(posts)

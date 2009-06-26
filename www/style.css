@@ -1,6 +1,6 @@
 body,form{margin:0}
 img{border:0}
-tr{height:24px;text-align:center}
+tr{height:24px;text-align:center;}
 td{font-size:14px}
 div{font-size:12px;line-height:18px}
 a{color:#0000CC;text-decoration:none}
@@ -49,9 +49,5 @@ background-color:#0077cc}
 .button{float:right;height:100%;margin:0;padding:2px 8px;color:#ffffff;background:#50b050;font-weight:bold;font-size:16px;font-family:Verdana;border:0}
 .button:hover {color:#009f00;background:#dbf1d4;}
 
-.otr {background-color:#f7ffe7;}
-.etr {background-color:#e7f0ff;}
-.htr {background-color:#ffe7f3;}
-
-.hot {vertical-align:super;color:#ff3333;font-weight:bold}
+.hot {vertical-align:super;padding-left:3px;color:#ff3333;font-weight:bold;font-size:10px;}
 

@@ -33,6 +33,7 @@ $pads = $ads->getElementsByTagName('pads');
 <?php echo $sp; ?> posts total, <a href="<?php echo $origin_page; ?>" target="_blank">click here</a> to view origin page.<br />
 <form method="get" name="demogo" action="demo.php">
 <div class="sq" style="width:108px">
+  <input value="<?php echo $doc_file; ?>" name="doc" type="hidden" />
   <input type="submit" value="Go!" class="button"/>
   <input value="<?php echo $cp==$sp?$cp:$cp+1; ?>" name="p" size="4" class="sqi" />
 </div>
@@ -85,7 +86,7 @@ foreach( $posts as $post ) {
   echo "<a name=\"post_$post_id\"></a>\n";
   echo "<div class=\"pt\">\n";
   echo "<div class=\"time\">$date_time</div>\n";
-  echo "<span class=\"pno\"><a href=\"demo.php?p=$post_id\">$post_id</a></span>\n";
+  echo "<span class=\"pno\"><a href=\"demo.php?doc=$doc_file&p=$post_id\">$post_id</a></span>\n";
   echo "$title\n";
   echo "</div>\n";
   

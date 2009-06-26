@@ -10,7 +10,8 @@
 
 <div class="pt">Navigate</div>
 <div class="pb">
-  Single Page <a href="">Sample</a><br />
+  Single Page <a href="processpage.php?url=thread-4027497-1-1.html">Sample</a><br />
+  Sample site: <a href="site.php?site=dospy">dospy</a><br />
 </div>
 
 </div>
@@ -32,7 +33,8 @@ Input an url you want to see, or view the sample <a href="processpage.php?url=th
 
 <div class="pt">Supported Sites</div>
 <div class="pb">
-  <a href="site.php?site=dospy">Dospy</a>
+  <a href="site.php?site=dospy">Dospy</a>: A mobile phone forum focus on these which use Symbian OS.<br />
+  <a href="site.php?site=onlylady">onlylady</a>: A famous lady's forum.<br />
 </div>
 
 </div>

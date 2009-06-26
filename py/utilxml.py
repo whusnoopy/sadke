@@ -50,6 +50,13 @@ def readXmlFile(file_path, number=150):
   logger.debug('extract xml file %(file_path)s' % locals())
 
   xmldoc = minidom.parse(file_path)
+
+  url_node = xml.getElementsByTagName('origin_page')[0]
+  if url_node.firstChild:
+    url = url_node.firstChild.data
+  else:
+    url = ""
+
   posts = []
   post_nodes = xmldoc.getElementsByTagName('post')
 
@@ -110,7 +117,7 @@ def readXmlFile(file_path, number=150):
     posts.append(post)
 
   posts.sort(cmp=(lambda x, y: cmp(x['no'], y['no'])))
-  return posts
+  return url, posts
 
 def outputXmlAdsFile(file_path, url, posts, ads):
   '''output ads keywords in sads and pads to a xml file on file_path
