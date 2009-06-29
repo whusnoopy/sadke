@@ -205,8 +205,6 @@ def processSingleThread(thread):
     pc = content[ps:pt]
     pages = re.findall('thread-[0-9]{1,7}-[0-9]--\.html', pc)
 
-    print pages
-
     for p in pages:
       content = getUrl(site_url + p)
       if not content:

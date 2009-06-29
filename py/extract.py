@@ -5,7 +5,6 @@
 
 import os
 import sys
-import optparse
 
 from pymmseg import mmseg
 mmseg.dict_load_defaults()
@@ -94,36 +93,6 @@ def extractPage(file_path, posts=[]):
   logger.debug('Extract %(file_path)s successful.' % locals())
   return posts
 
-def main() :
-  parser = optparse.OptionParser(usage='%prog [options] FILE')
-  parser.add_option('-o', '--output', dest='output',
-                    help='Output filename, or use current time defaultly')
-  
-  options, args = parser.parse_args()
-
-  if len(args) < 1:
-    parser.error('File to extract not provided.')
-  elif len(args) > 1:
-    parser.error('Only one file may be specified.')
-
-  file_path = args[0]
-  posts = extractPage(file_path)
-
-  if options.output:
-    pass
-  else:
-    for p in posts:
-      print '========'
-      print 'Post %d(%d) "%s" on %s' % (p['no'], p['id'], p['title'], p['date'])
-      print '--'
-      print p['body']
-      print '--'
-      for ref in p['refs']:
-        print 'to %d(%d): %s' % (ref['no'], ref['id'], ref['body'])
-      print '>>>>>>>>'
-
-  return 0
-
 if __name__ == '__main__' :
-  sys.exit(main())
+  print 'This is a help module'
 

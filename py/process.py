@@ -55,7 +55,6 @@ def main():
     logger.info("crawl '%s' as %s" % (url, ",".join(filelist)))
     # Extract posts
 
-    print 'extract...'
     posts = []
     for f in filelist:
       posts = extractPage(f, posts)

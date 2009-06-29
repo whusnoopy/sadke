@@ -30,7 +30,7 @@ $pads = $ads->getElementsByTagName('pads');
 <div class="pt">Navigate</div>
 <div class="pb">
 <center>
-<?php echo $sp; ?> posts total, <a href="<?php echo $origin_page; ?>" target="_blank">click here</a> to view origin page.<br />
+<?php echo $sp; ?> posts total, <a href="<?php echo $origin_page; ?>" target="_blank">click here</a> to origin page.<br />
 <form method="get" name="demogo" action="demo.php">
 <div class="sq" style="width:108px">
   <input value="<?php echo $doc_file; ?>" name="doc" type="hidden" />

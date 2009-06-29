@@ -11,5 +11,5 @@
     }
   }
 
-  echo "<script type='text/javascript'>location.href='index.php?msg=Process page $url Faile';</script>";
+  echo "<script type='text/javascript'>location.href='index.php?msg=Process page $url Failed';</script>";
 ?>

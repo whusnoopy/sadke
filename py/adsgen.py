@@ -4,12 +4,45 @@
 # author: cswenye@gmail.com
 
 from base import logger
-from idf import idf
+
+from UserDict import UserDict
+from math import log
 
 # parameters
 alpha = 2     # title additional weight
 beta = 0.5    # refer weight
 gamma = 0.5   # quote additional weight
+
+dic_path = "/home/cswenye/sadke/data/sogou_utf8.dic"
+
+class IDFInfo(UserDict):
+  "store idf info from dic"
+  def __init__(self, dict=None):
+    UserDict.__init__(self)
+    if dict:
+      self.rebuild(dict)
+  
+  def rebuild(self, dic_name):
+    self.clear()
+    sum = 1000000000
+    df = file(dic_name, "r")
+    while True:
+      word_info = df.readline()
+      if not word_info:
+        break
+      infos = word_info.split()
+      word = str(infos[0])
+      freq = float(infos[1])
+      self[word] = float(log(sum*1.0/freq))
+    df.close()
+  
+  def __getitem__(self, key) :
+    if self.data.has_key(key) :
+      return self.data[key]
+    else :
+      return 0
+
+idf = IDFInfo(dic_path)
 
 def isAdWords(token):
   return True
