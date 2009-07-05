@@ -48,21 +48,21 @@ $pads = $ads->getElementsByTagName('pads');
     $keywords = $banner_ads->getElementsByTagname( "kw" );
     foreach ( $keywords as $banner_ad ) {
       $keyword = $banner_ad->nodeValue;
-      echo "$keyword <br />";
+      echo "$keyword <br />\n";
     }
-    echo "<br /><i>These words are select by traditional tf*idf method.</i>";
+    echo "<br /><i>These words are select by traditional tf*idf method.</i>\n";
     echo "</div>\n";
   }
 
   if ( $sidebar_ads->hasChildNodes() > 0 ) {
-    echo "<div class=\"gat\">Sidebar Ads</div>";
+    echo "<div class=\"gat\">Sidebar Ads</div>\n";
     echo "<div class=\"gab\">\n";
     $keywords = $sidebar_ads->getElementsByTagName( "kw" );
     foreach ( $keywords as $sidebar_ad ) {
       $keyword = $sidebar_ad->nodeValue;
       echo "$keyword <br />\n";
     }
-    echo "<br /><i>These words are select by dynamic global method.</i>";
+    echo "<br /><i>These words are select by dynamic global method.</i>\n";
     echo "</div>\n";
   }
 ?>
@@ -87,7 +87,8 @@ foreach( $posts as $post ) {
   echo "<div class=\"pt\">\n";
   echo "<div class=\"time\">$date_time</div>\n";
   echo "<span class=\"pno\"><a href=\"demo.php?doc=$doc_file&p=$post_id\">$post_id</a></span>\n";
-  echo "$title\n";
+  if ( strlen($title) > 0 )
+    echo "$title\n";
   echo "</div>\n";
   
   echo "<div class=\"pb\">\n";
