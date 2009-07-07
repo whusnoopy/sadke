@@ -7,7 +7,7 @@
 <meta name="Description" content="Ads Keywords Extraction Demo" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-
+<?php $root_dir = "/home/cswenye/sadke/" ?>
 <body>
 <center>
 

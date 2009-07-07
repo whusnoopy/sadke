@@ -17,12 +17,13 @@ from utilxml import readXmlFile
 from utilxml import outputXmlAdsFile
 from utilhtml import genHtml
 
+from base import root_dir
 
 def main():
   # args and options init
   parser = optparse.OptionParser(usage='%prog [options] site')
   parser.add_option('-d', '--work_dir', dest='work_dir',
-                    help='Work dictionary, or will use /home/cswenye/adke/ defaultly')
+                    help='Work dictionary, or will use %s defaultly' % root_dir)
   parser.add_option('-r', '--refresh', action="store_true", dest='refresh', default=False,
                     help='Refresh each page')
   parser.add_option('-g', '--regen_ads', action="store_true", dest='regen', default=False,
@@ -40,7 +41,7 @@ def main():
   if options.work_dir:
     work_dir = os.path.abspath(options.work_dir)
   else:
-    work_dir = os.path.join("/home/cswenye/adke/", ((site.split('/'))[2].split('.'))[1])
+    work_dir = os.path.join(root_dir, ((site.split('/'))[2].split('.'))[1])
 
   print 'start to process site %s to %s' % (site, work_dir)
 

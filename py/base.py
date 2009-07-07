@@ -27,4 +27,5 @@ if __name__ == '__main__' :
   print 'This is a help module, and it exited'
 else :
   logger = LOGGER()
+  root_dir = '/home/cswenye/sadke/'
 

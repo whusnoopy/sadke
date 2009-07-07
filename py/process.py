@@ -14,11 +14,13 @@ from adsgen import genUpdateAds
 from utilxml import readXmlFile
 from utilxml import outputXmlAdsFile
 
+from base import root_dir
+
 def main():
   # args and options init
   parser = optparse.OptionParser(usage='%prog [OPTIONS] [url]')
   parser.add_option('-d', '--work_dir', dest='work_dir',
-                    help='Work dictionary, or will use /home/cswenye/sadke/tmp/ defaultly')
+                    help='Work dictionary, or will use %s/tmp/ defaultly' % root_dir)
   parser.add_option('-f', '--file', dest='file',
                     help='process html/xml file on disk')
   parser.add_option('-r', '--refresh', action="store_true", dest='refresh', default=False,
@@ -29,7 +31,7 @@ def main():
   if options.work_dir:
     work_dir = os.path.abspath(options.work_dir)
   else:
-    work_dir = "/home/cswenye/sadke/tmp/"
+    work_dir = os.path.join(root_dir, "tmp/")
   output_file_path = os.path.join(work_dir, "adke.xml")
 
   url = ""

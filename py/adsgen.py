@@ -3,7 +3,10 @@
 #
 # author: cswenye@gmail.com
 
+import os
+
 from base import logger
+from base import root_dir
 
 from UserDict import UserDict
 from math import log
@@ -13,7 +16,7 @@ alpha = 2     # title additional weight
 beta = 0.5    # refer weight
 gamma = 0.5   # quote additional weight
 
-dic_path = "/home/cswenye/sadke/data/sogou_utf8.dic"
+dic_path = os.path.join(root_dir, "data/sogou_utf8.dic")
 
 class IDFInfo(UserDict):
   "store idf info from dic"

@@ -1,8 +1,10 @@
 <?php
+include("header.php");
+
 if (isset($_GET['doc']))
   $doc_file = $_GET['doc'];
 else
-  $doc_file = "/home/cswenye/sadke/tmp/adke.xml";
+  $doc_file = $root_dir."tmp/adke.xml";
 
 if (isset($_GET['p']))
   $cp = $_GET['p'];
@@ -23,7 +25,6 @@ $banner_ads = $ads->getElementsByTagName( "banner" )->item(0);
 $sidebar_ads = $ads->getElementsByTagName( "sidebar" )->item(0);
 $pads = $ads->getElementsByTagName('pads');
 ?>
-<?php include("header.php") ?>
 
 <div id="right">
 

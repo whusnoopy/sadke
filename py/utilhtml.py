@@ -102,7 +102,7 @@ def main():
   # args and options init
   parser = optparse.OptionParser(usage='%prog [options] site')
   parser.add_option('-d', '--work_dir', dest='work_dir',
-                    help='Work dictionary, or will use /home/cswenye/adke/ defaultly')
+                    help='Work dictionary')
   options, args = parser.parse_args()
 
   if options.work_dir:

@@ -19,11 +19,11 @@ from utildospy import grepLastEdit, grepHtmlTag, convertHtmlChar, mergeBlankLine
 from utilxml import readXmlFile
 from utilxml import outputXmlAdsFile
 
+from base import root_dir
 
 # Global settings
 site_url = "http://bbs.onlylady.com/"
-work_dir = "/home/cswenye/adke/onlylady/"
-
+work_dir = os.path.join(root_dir, "tmp/onlylady/")
 
 def getUrl(url):
   try:
@@ -252,8 +252,6 @@ def main():
                     help='process html/xml file on disk')
   parser.add_option('-s', '--site', dest='site',
                     help='Crawl the whole forum')
-  parser.add_option('-r', '--refresh', action="store_true", dest='refresh', default=False,
-                    help='Refresh each page')
   options, args = parser.parse_args()
 
   if options.site:

@@ -5,7 +5,7 @@
   else
     $site = "dospy";
 
-  $dir = "/home/cswenye/adke/".$site."/";
+  $dir = $root_dir.$site."/";
 ?>
 
 <div id="right">
